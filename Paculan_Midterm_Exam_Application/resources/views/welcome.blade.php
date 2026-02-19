@@ -3,42 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paculan | Midterm Exam</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <title>Paculan | Tech Haven</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
 </head>
-<body class="bg-gray-50 font-sans leading-normal tracking-normal">
+<body class="bg-slate-950 text-slate-200 min-h-screen selection:bg-cyan-500/30">
 
-    <nav class="bg-white shadow-md p-6 mb-10">
-        <div class="container mx-auto">
-            <h1 class="text-2xl font-bold text-gray-800 tracking-tight">
-                PACULAN <span class="text-blue-600">TECH STORE</span>
-            </h1>
-        </div>
-    </nav>
+    <div class="fixed top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+    <div class="fixed top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
 
-    <main class="container mx-auto px-4">
-        <h2 class="text-xl font-semibold text-gray-600 mb-6 italic">Featured Products</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="relative max-w-6xl mx-auto px-6 py-12">
+        <header class="flex justify-between items-center mb-16">
+            <div>
+                <h1 class="text-4xl font-extrabold tracking-tight text-white bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500">
+                    TechVault.
+                </h1>
+                <p class="text-slate-400 mt-2">Paculan Midterm Exam Application</p>
+            </div>
+            <div class="hidden md:block">
+                <span class="px-4 py-2 rounded-full border border-slate-700 text-xs font-medium text-slate-300 backdrop-blur-md">
+                    Laravel v{{ App::VERSION() }}
+                </span>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($products as $product)
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-lg transition-shadow duration-300">
-                <div class="text-xs font-bold text-blue-500 uppercase mb-2">{{ $product['color'] }}</div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">{{ $product['name'] }}</h3>
-                <p class="text-gray-500 text-sm mb-4">{{ $product['desc'] }}</p>
-                <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-50">
-                    <span class="text-xl font-black text-gray-900">${{ number_format($product['price'], 2) }}</span>
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700">
-                        View Details
+            <div class="group relative bg-slate-900/50 border border-slate-800 rounded-3xl p-8 backdrop-blur-xl hover:border-cyan-500/50 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute top-6 right-6">
+                    <span class="flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full {{ $product['status'] == 'In Stock' ? 'bg-cyan-400' : 'bg-red-400' }} opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 {{ $product['status'] == 'In Stock' ? 'bg-cyan-500' : 'bg-red-500' }}"></span>
+                    </span>
+                </div>
+
+                <div class="mb-8">
+                    <p class="text-xs font-bold text-cyan-500 uppercase tracking-widest mb-1">{{ $product['brand'] }}</p>
+                    <h2 class="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">{{ $product['name'] }}</h2>
+                </div>
+
+                <div class="flex items-end justify-between mt-auto">
+                    <div>
+                        <p class="text-slate-500 text-xs uppercase font-semibold tracking-tighter">Current Price</p>
+                        <p class="text-3xl font-black text-white">${{ number_format($product['price']) }}</p>
+                    </div>
+                    
+                    <button class="bg-white text-slate-950 p-3 rounded-2xl font-bold hover:bg-cyan-400 transition-colors group-hover:scale-110 duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
                     </button>
                 </div>
             </div>
             @endforeach
         </div>
-    </main>
 
-    <footer class="mt-20 py-10 border-t border-gray-200 text-center text-gray-400 text-sm">
-        Paculan Midterm Exam Application &copy; 2024
-    </footer>
+        <footer class="mt-24 text-center border-t border-slate-900 pt-8">
+            <p class="text-slate-600 text-sm italic">
+                Developed for Midterm Examination &bull; 2026
+            </p>
+        </footer>
+    </div>
 
 </body>
 </html>

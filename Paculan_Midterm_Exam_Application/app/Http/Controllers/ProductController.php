@@ -9,10 +9,10 @@ class ProductController extends Controller
     public function index()
     {
         $products = [
-            ['name' => 'MacBook Pro M3', 'desc' => 'Next-gen performance for pros.', 'price' => 1999, 'color' => 'Space Black'],
-            ['name' => 'Sony WH-1000XM5', 'desc' => 'Industry-leading noise canceling.', 'price' => 399, 'color' => 'Silver'],
-            ['name' => 'Keychron Q6', 'desc' => 'Fully customizable mechanical keyboard.', 'price' => 160, 'color' => 'Carbon Grey'],
-            ['name' => 'Logitech MX Master 3S', 'desc' => 'Ultrafast scrolling and precision.', 'price' => 99, 'color' => 'Graphite'],
+            ['name' => 'iPhone 15 Pro', 'brand' => 'Apple', 'price' => 999, 'status' => 'In Stock'],
+            ['name' => 'Galaxy S24 Ultra', 'brand' => 'Samsung', 'price' => 1199, 'status' => 'Limited'],
+            ['name' => 'Pixel 8 Pro', 'brand' => 'Google', 'price' => 899, 'status' => 'In Stock'],
+            ['name' => 'ROG Phone 8', 'brand' => 'ASUS', 'price' => 1099, 'status' => 'Out of Stock'],
         ];
         return view('products.index', compact('products'));
     }
